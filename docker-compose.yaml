@@ -1,17 +1,29 @@
 version: "3.9"
 
 services:
-  db:
+  order_db:
     image: postgres:15
-    container_name: postgres_db
+    container_name: order_db
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${ORDER_DB_USER}
+      POSTGRES_PASSWORD: ${ORDER_DB_PASSWORD}
+      POSTGRES_DB: ${ORDER_DB}
     volumes:
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/01_orders.sql:/docker-entrypoint-initdb.d/01_orders.sql
     ports:
-      - "5432:5432"
+      - "5433:5432"
+
+  inventory_db:
+    image: postgres:15
+    container_name: inventory_db
+    environment:
+      POSTGRES_USER: ${INVENTORY_DB_USER}
+      POSTGRES_PASSWORD: ${INVENTORY_DB_PASSWORD}
+      POSTGRES_DB: ${INVENTORY_DB}
+    volumes:
+      - ./database/02_inventory.sql:/docker-entrypoint-initdb.d/02_inventory.sql
+    ports:
+      - "5434:5432"
 
   adminer:
     image: adminer
@@ -19,20 +31,26 @@ services:
     ports:
       - 8080:8080
 
-  auth-service:
-    build: ./server/auth-service
+  order_service:
+    build: ./server/order_service
     ports:
       - "8000:8000"
     env_file:
       - .env
     depends_on:
-      - db
+      - order_db
+    environment:
+      - ORDER_DB_HOST=order_db  
+      - DB_NAME=${ORDER_DB}
 
-  user-service:
-    build: ./server/user-service
+  inventory_service:
+    build: ./server/inventory_service
     ports:
       - "8001:8001"
     env_file:
       - .env
     depends_on:
-      - db
+      - inventory_db
+    environment:
+      - INVENTORY_DB_HOST=inventory_db
+      - DB_NAME=${INVENTORY_DB}
