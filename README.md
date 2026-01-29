@@ -16,13 +16,11 @@ Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
 ## Tech Stack
 
 - **Languages:** Python 3.13.7  
-- **Backend:** Flask,   
+- **Backend:** Flask, psycopg2-binary
 - **Database:** PostgreSQL 18  
 - **DevOps:** Docker, Docker Compose, GitHub Actions  
 
 ---
-
-## Getting Started
 
 ### Clone the Repository
 ```bash

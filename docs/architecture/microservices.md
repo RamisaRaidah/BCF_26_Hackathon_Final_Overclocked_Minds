@@ -27,25 +27,6 @@ This document outlines the microservices architecture for our project. We have d
 
 ---
 
-## How to Run Locally (For Devs & Testers)
-
-**Prerequisites:**
-* Docker & Docker Compose installed.
-
-**Steps:**
-1.  **Clone the Repo:**
-    ```bash
-    git clone https://github.com/RamisaRaidah/BCF_26_Hackathon_Final_Overclocked_Minds
-    cd BCF_26_Hackathon_Final_Overclocked_Minds
-    ```
-
-2.  **Fire it up:**
-    ```bash
-    docker-compose up --build
-    ```
-
----
-
 ##  Deployment (CI/CD)
 * **Live URL:** Inventory:  https://bcf-26-hackathon-final-overclocked-minds-a2yl.onrender.com/
                 Order:      https://bcf-26-hackathon-final-overclocked-minds-cu7q.onrender.com/
