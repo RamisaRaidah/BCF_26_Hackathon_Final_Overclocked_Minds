@@ -70,7 +70,6 @@ def adjust_inventory():
     sku = data.get("sku")
     qty = data.get("qty")
 
-    # --- validation ---
     if not transaction_uuid or not sku or qty is None:
         return jsonify({"status": "error", "detail": "required: transaction_uuid, sku, qty"}), 400
 
