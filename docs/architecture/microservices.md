@@ -7,7 +7,7 @@ This document outlines the microservices architecture for our project. We have d
 * **Backend:** Python (Flask) 
 * **Database:** PostgreSQL 
 * **Containerization:** Docker & Docker Compose 
-* **Deployment:** !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+* **Deployment:** https://bcf-26-hackathon-final-overclocked-minds-a2yl.onrender.com/
 
 ---
 
@@ -44,10 +44,7 @@ This document outlines the microservices architecture for our project. We have d
     docker-compose up --build
     ```
 
-3.  **Access the App:**
-    * API is live at:  //pore edit korbaaaaa!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 ---
 
 ##  Deployment (CI/CD)
-* **Live URL:** !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+* **Live URL:** 

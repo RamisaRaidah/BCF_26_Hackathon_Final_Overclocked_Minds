@@ -29,3 +29,9 @@ CREATE TABLE IF NOT EXISTS inventory_calls (
 );
 
 CREATE INDEX IF NOT EXISTS idx_inv_calls_txn ON inventory_calls(transaction_uuid);
+
+
+INSERT INTO inventory_calls (order_id, transaction_uuid, http_status_code, response_time_ms, error_message) VALUES 
+(1, '550e8400-e29b-41d4-a716-446655440000', 200, 4500, 'Success (Delayed by Gremlin)'),
+(2, '670e8400-e29b-41d4-a716-446655440001', 500, 150, 'Internal Server Error (Ghost Crash)'),
+(2, '670e8400-e29b-41d4-a716-446655440001', 200, 45, 'Success (Retry - Idempotency triggered)');

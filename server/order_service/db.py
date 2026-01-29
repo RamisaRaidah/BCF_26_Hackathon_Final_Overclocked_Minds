@@ -11,17 +11,21 @@ logging.basicConfig (
 
 def get_db_connection():
     try:
-        connection = psycopg2.connect(
-            host=os.environ["ORDER_DB_HOST"],
-            database=os.environ["DB_NAME"],
-            user=os.environ["ORDER_DB_USER"],
-            password=os.environ["ORDER_DB_PASSWORD"]
-        )
-        return connection
-    except Exception:
-        logging.error("Database connection failed")
+        if os.environ.get("DATABASE_URL"):
+            connection = psycopg2.connect(os.environ["DATABASE_URL"])
+        else:
+            connection = psycopg2.connect(
+                host=os.environ["ORDER_DB_HOST"],
+                database=os.environ["ORDER_DB"], 
+                user=os.environ["ORDER_DB_USER"],
+                password=os.environ["ORDER_DB_PASSWORD"]
+            )
+        return connection  
+    except Exception as e:
+        logging.error(f"Database connection failed: {e}")
         return None
     
+
 def execute_query(query, params=None, fetch_one=False, fetch_all=False):
     connection = get_db_connection()
     if connection is None:
