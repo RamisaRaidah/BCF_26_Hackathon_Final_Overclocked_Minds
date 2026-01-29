@@ -11,15 +11,18 @@ logging.basicConfig (
 
 def get_db_connection():
     try:
-        connection = psycopg2.connect(
-            host=os.environ["INVENTORY_DB_HOST"],
-            database=os.environ["INVENTORY_DB"],
-            user=os.environ["INVENTORY_DB_USER"],
-            password=os.environ["INVENTORY_DB_PASSWORD"]
-        )
+        if "DATABASE_URL" in os.environ:
+            connection = psycopg2.connect(os.environ["DATABASE_URL"])
+        else:
+            connection = psycopg2.connect(
+                host=os.environ["INVENTORY_DB_HOST"],
+                database=os.environ["INVENTORY_DB"],
+                user=os.environ["INVENTORY_DB_USER"],
+                password=os.environ["INVENTORY_DB_PASSWORD"]
+            )
         return connection
-    except Exception:
-        logging.error("Database connection failed")
+    except Exception as e:
+        logging.error(f"Database connection failed: {e}")
         return None
     
 def execute_query(query, params=None, fetch_one=False, fetch_all=False):
