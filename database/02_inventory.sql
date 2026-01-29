@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS stock (
 INSERT INTO stock (sku, available) VALUES
 ('PS5', 100),
 ('LAPTOP', 50),
-('MOUSE', 200);
-
+('MOUSE', 200)
+ON CONFLICT (sku) DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS adjustments (
   transaction_uuid UUID PRIMARY KEY,
