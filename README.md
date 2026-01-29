@@ -1,5 +1,3 @@
-# TaskHive: Resilient Microservices System
-
 **Developed by Overclocked_Minds:** Shanon, Arana, Dola
 
 . Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
