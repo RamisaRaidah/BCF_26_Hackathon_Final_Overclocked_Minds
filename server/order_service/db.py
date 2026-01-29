@@ -13,7 +13,7 @@ def get_db_connection():
     try:
         connection = psycopg2.connect(
             host=os.environ["ORDER_DB_HOST"],
-            database=os.environ["ORDER_DB"],
+            database=os.environ["DB_NAME"],
             user=os.environ["ORDER_DB_USER"],
             password=os.environ["ORDER_DB_PASSWORD"]
         )

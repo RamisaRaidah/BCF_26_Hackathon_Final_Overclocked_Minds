@@ -11,6 +11,12 @@ CREATE TABLE IF NOT EXISTS orders (
 
 CREATE INDEX IF NOT EXISTS idx_orders_txn ON orders(transaction_uuid);
 
+INSERT INTO orders (transaction_uuid, user_id, sku, quantity, order_status)
+VALUES 
+  ('550e8400-e29b-41d4-a716-446655440000', 101, 'IPHONE-15-PRO', 1, 'COMPLETED'),
+  ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 102, 'MACBOOK-M3-AIR', 2, 'PENDING'),
+  ('f47ac10b-58cc-4372-a567-0e02b2c3d479', 103, 'SONY-WH1000XM5', 1, 'FAILED');
+
 
 CREATE TABLE IF NOT EXISTS inventory_calls (
   id SERIAL PRIMARY KEY,
