@@ -1,19 +1,23 @@
 \connect inventory_db;
 
-CREATE TABLE products (
-    product_name VARCHAR(100) PRIMARY KEY, 
-    stock_count INT DEFAULT 0
+CREATE TABLE IF NOT EXISTS stock (
+  sku VARCHAR(50) PRIMARY KEY,
+  available INT NOT NULL DEFAULT 0 CHECK (available >= 0)
 );
 
 
-INSERT INTO products (product_name, stock_count) VALUES 
+INSERT INTO stock (sku, available) VALUES
 ('PS5', 100),
-('Laptop', 50),
-('Mouse', 200);
+('LAPTOP', 50),
+('MOUSE', 200)
+ON CONFLICT (sku) DO NOTHING;
 
-CREATE TABLE processed_transactions (
-    transaction_uuid UUID PRIMARY KEY,
-    product_name VARCHAR(100),
-    quantity_deducted INT,
-    processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+CREATE TABLE IF NOT EXISTS adjustments (
+  transaction_uuid UUID PRIMARY KEY,
+  sku VARCHAR(50) NOT NULL,
+  qty INT NOT NULL CHECK (qty > 0),
+  applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_adjustments_sku ON adjustments(sku);
