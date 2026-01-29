@@ -1,6 +1,3 @@
-\connect order_db;
-
-
 CREATE TABLE IF NOT EXISTS orders (
   id SERIAL PRIMARY KEY,
   transaction_uuid UUID UNIQUE NOT NULL, 

@@ -1,5 +1,3 @@
-\connect inventory_db;
-
 CREATE TABLE IF NOT EXISTS stock (
   sku VARCHAR(50) PRIMARY KEY,
   available INT NOT NULL DEFAULT 0 CHECK (available >= 0)
@@ -9,8 +7,7 @@ CREATE TABLE IF NOT EXISTS stock (
 INSERT INTO stock (sku, available) VALUES
 ('PS5', 100),
 ('LAPTOP', 50),
-('MOUSE', 200)
-ON CONFLICT (sku) DO NOTHING;
+('MOUSE', 200);
 
 
 CREATE TABLE IF NOT EXISTS adjustments (
