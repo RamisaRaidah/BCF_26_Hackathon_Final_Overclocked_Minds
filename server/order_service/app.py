@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 import logging
 import os
 import time
@@ -48,10 +48,15 @@ def health():
 
 @app.route("/metrics")
 def metrics():
-    return jsonify({
-        "avg_30s_ms": round(latency_tracker.avg_ms(), 2),
-        "status": latency_tracker.status()
-    }), 200
+    status = latency_tracker.status()
+    if status == "red":
+        return render_template("red.html")
+    else:
+        return render_template("green.html")
+    # return jsonify({
+    #     "avg_30s_ms": round(latency_tracker.avg_ms(), 2),
+    #     "status": latency_tracker.status()
+    # }), 200
 
 @app.route("/orders", methods = ["POST"])
 def create_order():
