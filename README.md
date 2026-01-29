@@ -1,6 +1,6 @@
-**Developed by Overclocked_Minds:** Shanon, Arana, Dola
+**Developed by Overclocked_Minds:** Shanon, Arana, Dola.
 
-. Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
+Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
 
 ---
 
