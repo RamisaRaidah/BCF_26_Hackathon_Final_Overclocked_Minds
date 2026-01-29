@@ -18,3 +18,6 @@ CREATE TABLE IF NOT EXISTS adjustments (
 );
 
 CREATE INDEX IF NOT EXISTS idx_adjustments_sku ON adjustments(sku);
+
+INSERT INTO adjustments (transaction_uuid, sku, qty) 
+VALUES ('550e8400-e29b-41d4-a716-446655440000', 'PS5', 1);
