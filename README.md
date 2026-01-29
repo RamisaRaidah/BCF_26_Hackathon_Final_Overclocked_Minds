@@ -13,7 +13,7 @@ Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Languages:** Python 3.13.7  
 - **Backend:** Flask,   
@@ -22,7 +22,7 @@ Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Clone the Repository
 ```bash
