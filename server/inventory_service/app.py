@@ -14,10 +14,6 @@ logging.basicConfig (
     format = "%(asctime)s [%(levelname)s] %(message)s"
 )
 
-@app.route("/")
-def home():
-    return "Biday prithibi"
-
 # modeling gremlin
 GREMLIN_EVERY_N = int(os.environ["GREMLIN_EVERY_N"])            
 GREMLIN_DELAY_SECONDS = float(os.environ["GREMLIN_DELAY_SECONDS"])
@@ -42,7 +38,7 @@ def health():
         return jsonify({"status": "error", "detail": "db unreachable or schema missing"}), 500
     return jsonify({"status": "ok"}), 200 
 
-@app.get("/inventory/adjust/<txn>")
+@app.route("/inventory/adjust/<txn>")
 def get_adjustment(txn):
     try:
         txn_uuid = str(uuid.UUID(txn))
@@ -57,7 +53,7 @@ def get_adjustment(txn):
         return jsonify({"status": "NOT FOUND"}), 404
     return jsonify({"status": "APPLIED", "data": row}), 200
 
-@app.post("/inventory/adjust")
+@app.route("/inventory/adjust", methods = ["POST"])
 def adjust_inventory():
     gremlin_delay()
 
