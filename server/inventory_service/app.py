@@ -31,6 +31,10 @@ def crash_after_commit():
         os._exit(1)  
 
 # API endpoints
+@app.route("/")
+def home():
+    return "Inventory"
+
 @app.route("/health")
 def health(): 
     row = execute_query("SELECT 1 AS ok FROM stock LIMIT 1;", fetch_one = True)
