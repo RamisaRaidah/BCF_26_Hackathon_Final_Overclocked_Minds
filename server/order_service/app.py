@@ -53,17 +53,17 @@ def metrics():
         return render_template("red.html")
     else:
         return render_template("green.html")
-    # return jsonify({
-    #     "avg_30s_ms": round(latency_tracker.avg_ms(), 2),
-    #     "status": latency_tracker.status()
-    # }), 200
+    
+@app.route("/orders", methods = ["GET"])
+def place_order():
+    return render_template("order.html")  
 
 @app.route("/orders", methods = ["POST"])
 def create_order():
     data = request.get_json(silent = True) or {}
-    user_id = data.get("user_id")
-    sku = data.get("sku")
-    qty = data.get("qty", 1)
+    user_id = request.form.get("user_id")
+    sku = request.form.get("sku")
+    qty = request.form.get("qty")
     if user_id is None or not sku:
         return jsonify({"status": "error", "detail": "required: user_id, sku"}), 400
     try:
