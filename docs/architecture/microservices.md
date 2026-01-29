@@ -7,8 +7,8 @@ This document outlines the microservices architecture for our project. We have d
 * **Backend:** Python (Flask) 
 * **Database:** PostgreSQL 
 * **Containerization:** Docker & Docker Compose 
-* **Deployment:** https://bcf-26-hackathon-final-overclocked-minds-a2yl.onrender.com/
-
+* **Deployment:** Inventory:  https://bcf-26-hackathon-final-overclocked-minds-a2yl.onrender.com/
+                  Order:      https://bcf-26-hackathon-final-overclocked-minds-cu7q.onrender.com/
 ---
 
 ## The Services
@@ -47,4 +47,5 @@ This document outlines the microservices architecture for our project. We have d
 ---
 
 ##  Deployment (CI/CD)
-* **Live URL:** 
+* **Live URL:** Inventory:  https://bcf-26-hackathon-final-overclocked-minds-a2yl.onrender.com/
+                Order:      https://bcf-26-hackathon-final-overclocked-minds-cu7q.onrender.com/
