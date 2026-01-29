@@ -35,12 +35,12 @@ def maybe_crash_after_commit():
 
 
 # ---------- Endpoints ----------
-@app.get("/health")
-def health():
-    row = execute_query("SELECT 1 AS ok FROM stock LIMIT 1;", fetch_one=True)
-    if row is None:
-        return jsonify({"status": "error", "detail": "db unreachable or schema missing"}), 500
-    return jsonify({"status": "ok"}), 200
+# @app.get("/health")
+# def health():
+#     row = execute_query("SELECT 1 AS ok FROM stock LIMIT 1;", fetch_one=True)
+#     if row is None:
+#         return jsonify({"status": "error", "detail": "db unreachable or schema missing"}), 500
+#     return jsonify({"status": "ok"}), 200
 
 
 @app.get("/inventory/adjust/<txn>")

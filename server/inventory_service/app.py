@@ -1,14 +1,10 @@
 from flask import Flask, jsonify
-from flask_jwt_extended import JWTManager
 from datetime import timedelta
 import logging
 import os
+from db import get_db_connection, execute_query
 
 app = Flask(__name__)
-
-app.config["JWT_SECRET_KEY"] = os.environ["SECRET_KEY"] 
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days = 1) 
-jwt = JWTManager(app)
 
 logging.basicConfig (
     filename = "app.log",
@@ -21,8 +17,11 @@ def home():
     return "Biday prithibi"
 
 @app.route("/health")
-def health():
+def health(): 
+    row = execute_query("SELECT 1 AS ok FROM stock LIMIT 1;", fetch_one = True)
+    if row is None:
+        return jsonify({"status": "error", "detail": "db unreachable or schema missing"}), 500
     return jsonify({"status": "ok"}), 200 
 
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", port = 8000, debug = True)
+    app.run(host = "0.0.0.0", port = 8001, debug = True)
