@@ -1,6 +1,8 @@
-**Developed by Overclocked_Minds:** Shanon, Arana, Dola.
-
-Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
+It's team Overclocked_Minds and this is our submission for the final round of Microservices and DevOps segment in BUET CSE FEST 2026 hackathon.
+Meet our team members:
+ * [Shadman Sami Shanon (CSE, BUET)](https://github.com/ShadowMan18)
+ * [Ramisa Raidah Arana (CSE, BUET)](https://github.com/Ramisaraidah)
+ * [Kongkona Saha Dola (CSE, BUET)](https://github.com/Dola-2305088)
 
 ---
 
@@ -15,8 +17,9 @@ Built for the **BCF_26_Hackathon_Microservices_And_DevOps**.
 
 ## Tech Stack
 
-- **Languages:** Python 3.13.7  
-- **Backend:** Flask, psycopg2-binary
+- **Language:** Python
+- **Backend:** Flask
+- **Frontend:** HTML, CSS
 - **Database:** PostgreSQL 18  
 - **DevOps:** Docker, Docker Compose, GitHub Actions  
 
